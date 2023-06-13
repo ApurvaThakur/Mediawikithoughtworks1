@@ -1,0 +1,24 @@
+Namespacename: mediawiki-ns
+
+Deploymentname: mediawiki-deployment
+
+Servicename: mediawiki-service
+
+Ingressname:  mediawiki-ingress
+
+labels:
+  app.kubernetes.io/name: mediawiki
+ 
+matchLabels:
+  app.kubernetes.io/name: mediawiki
+  
+selector:
+  app.kubernetes.io/name: mediawiki
+
+containers:
+  name: mediawiki
+  image: 498557562263.dkr.ecr.ap-south-1.amazonaws.com/mediawikiecrrepo:v1    
+  imagePullPolicy: Always
+  
+annotations: {}
+  

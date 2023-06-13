@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Values.Namespacename }}
+  name: {{ .Values.Deploymentname }}
+  labels:
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      {{- toYaml .Values.matchLabels| nindent 6 }}
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        {{- toYaml .Values.labels| nindent 8 }}
+    spec:
+      containers:
+      - image: {{ .Values.containers.image }}
+        imagePullPolicy: {{ .Values.containers.imagePullPolicy }}
+        name: {{ .Values.containers.name }}
+        ports:
+        - containerPort: 443
+

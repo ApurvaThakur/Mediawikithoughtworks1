@@ -1,0 +1,909 @@
+[0m[1mdata.aws_availability_zones.available: Reading...[0m[0m
+[0m[1mdata.aws_availability_zones.available: Read complete after 1s [id=ap-south-1][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # aws_eip.main[0m will be created
+[0m  [32m+[0m[0m resource "aws_eip" "main" {
+      [32m+[0m[0m allocation_id        = (known after apply)
+      [32m+[0m[0m association_id       = (known after apply)
+      [32m+[0m[0m carrier_ip           = (known after apply)
+      [32m+[0m[0m customer_owned_ip    = (known after apply)
+      [32m+[0m[0m domain               = (known after apply)
+      [32m+[0m[0m id                   = (known after apply)
+      [32m+[0m[0m instance             = (known after apply)
+      [32m+[0m[0m network_border_group = (known after apply)
+      [32m+[0m[0m network_interface    = (known after apply)
+      [32m+[0m[0m private_dns          = (known after apply)
+      [32m+[0m[0m private_ip           = (known after apply)
+      [32m+[0m[0m public_dns           = (known after apply)
+      [32m+[0m[0m public_ip            = (known after apply)
+      [32m+[0m[0m public_ipv4_pool     = (known after apply)
+      [32m+[0m[0m tags                 = {
+          [32m+[0m[0m "Name" = "TFEKSWorkshop-ngw-ip"
+        }
+      [32m+[0m[0m tags_all             = {
+          [32m+[0m[0m "Name" = "TFEKSWorkshop-ngw-ip"
+        }
+      [32m+[0m[0m vpc                  = true
+    }
+
+[1m  # aws_eks_cluster.this[0m will be created
+[0m  [32m+[0m[0m resource "aws_eks_cluster" "this" {
+      [32m+[0m[0m arn                   = (known after apply)
+      [32m+[0m[0m certificate_authority = (known after apply)
+      [32m+[0m[0m cluster_id            = (known after apply)
+      [32m+[0m[0m created_at            = (known after apply)
+      [32m+[0m[0m endpoint              = (known after apply)
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m identity              = (known after apply)
+      [32m+[0m[0m name                  = "TFEKSWorkshop-cluster"
+      [32m+[0m[0m platform_version      = (known after apply)
+      [32m+[0m[0m role_arn              = (known after apply)
+      [32m+[0m[0m status                = (known after apply)
+      [32m+[0m[0m tags                  = {
+          [32m+[0m[0m "Environment" = "Development"
+          [32m+[0m[0m "Owner"       = "Ashish Patel"
+          [32m+[0m[0m "Project"     = "TerraformEKSWorkshop"
+        }
+      [32m+[0m[0m tags_all              = {
+          [32m+[0m[0m "Environment" = "Development"
+          [32m+[0m[0m "Owner"       = "Ashish Patel"
+          [32m+[0m[0m "Project"     = "TerraformEKSWorkshop"
+        }
+      [32m+[0m[0m version               = "1.25"
+
+      [32m+[0m[0m vpc_config {
+          [32m+[0m[0m cluster_security_group_id = (known after apply)
+          [32m+[0m[0m endpoint_private_access   = true
+          [32m+[0m[0m endpoint_public_access    = true
+          [32m+[0m[0m public_access_cidrs       = [
+              [32m+[0m[0m "0.0.0.0/0",
+            ]
+          [32m+[0m[0m subnet_ids                = (known after apply)
+          [32m+[0m[0m vpc_id                    = (known after apply)
+        }
+    }
+
+[1m  # aws_eks_node_group.this[0m will be created
+[0m  [32m+[0m[0m resource "aws_eks_node_group" "this" {
+      [32m+[0m[0m ami_type               = "AL2_x86_64"
+      [32m+[0m[0m arn                    = (known after apply)
+      [32m+[0m[0m capacity_type          = "ON_DEMAND"
+      [32m+[0m[0m cluster_name           = "TFEKSWorkshop-cluster"
+      [32m+[0m[0m disk_size              = 20
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m instance_types         = [
+          [32m+[0m[0m "t2.medium",
+        ]
+      [32m+[0m[0m node_group_name        = "TFEKSWorkshop"
+      [32m+[0m[0m node_group_name_prefix = (known after apply)
+      [32m+[0m[0m node_role_arn          = (known after apply)
+      [32m+[0m[0m release_version        = (known after apply)
+      [32m+[0m[0m resources              = (known after apply)
+      [32m+[0m[0m status                 = (known after apply)
+      [32m+[0m[0m subnet_ids             = (known after apply)
+      [32m+[0m[0m tags                   = {
+          [32m+[0m[0m "Environment" = "Development"
+          [32m+[0m[0m "Owner"       = "Ashish Patel"
+          [32m+[0m[0m "Project"     = "TerraformEKSWorkshop"
+        }
+      [32m+[0m[0m tags_all               = {
+          [32m+[0m[0m "Environment" = "Development"
+          [32m+[0m[0m "Owner"       = "Ashish Patel"
+          [32m+[0m[0m "Project"     = "TerraformEKSWorkshop"
+        }
+      [32m+[0m[0m version                = (known after apply)
+
+      [32m+[0m[0m scaling_config {
+          [32m+[0m[0m desired_size = 2
+          [32m+[0m[0m max_size     = 5
+          [32m+[0m[0m min_size     = 1
+        }
+    }
+
+[1m  # aws_iam_role.cluster[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role" "cluster" {
+      [32m+[0m[0m arn                   = (known after apply)
+      [32m+[0m[0m assume_role_policy    = jsonencode(
+            {
+              [32m+[0m[0m Statement = [
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action    = "sts:AssumeRole"
+                      [32m+[0m[0m Effect    = "Allow"
+                      [32m+[0m[0m Principal = {
+                          [32m+[0m[0m Service = "eks.amazonaws.com"
+                        }
+                    },
+                ]
+              [32m+[0m[0m Version   = "2012-10-17"
+            }
+        )
+      [32m+[0m[0m create_date           = (known after apply)
+      [32m+[0m[0m force_detach_policies = false
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m managed_policy_arns   = (known after apply)
+      [32m+[0m[0m max_session_duration  = 3600
+      [32m+[0m[0m name                  = "TFEKSWorkshop-Cluster-Role"
+      [32m+[0m[0m name_prefix           = (known after apply)
+      [32m+[0m[0m path                  = "/"
+      [32m+[0m[0m role_last_used        = (known after apply)
+      [32m+[0m[0m tags_all              = (known after apply)
+      [32m+[0m[0m unique_id             = (known after apply)
+    }
+
+[1m  # aws_iam_role.node[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role" "node" {
+      [32m+[0m[0m arn                   = (known after apply)
+      [32m+[0m[0m assume_role_policy    = jsonencode(
+            {
+              [32m+[0m[0m Statement = [
+                  [32m+[0m[0m {
+                      [32m+[0m[0m Action    = "sts:AssumeRole"
+                      [32m+[0m[0m Effect    = "Allow"
+                      [32m+[0m[0m Principal = {
+                          [32m+[0m[0m Service = "ec2.amazonaws.com"
+                        }
+                    },
+                ]
+              [32m+[0m[0m Version   = "2012-10-17"
+            }
+        )
+      [32m+[0m[0m create_date           = (known after apply)
+      [32m+[0m[0m force_detach_policies = false
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m managed_policy_arns   = (known after apply)
+      [32m+[0m[0m max_session_duration  = 3600
+      [32m+[0m[0m name                  = "TFEKSWorkshop-Worker-Role"
+      [32m+[0m[0m name_prefix           = (known after apply)
+      [32m+[0m[0m path                  = "/"
+      [32m+[0m[0m role_last_used        = (known after apply)
+      [32m+[0m[0m tags_all              = (known after apply)
+      [32m+[0m[0m unique_id             = (known after apply)
+    }
+
+[1m  # aws_iam_role_policy_attachment.cluster_AmazonEKSClusterPolicy[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSClusterPolicy" {
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+      [32m+[0m[0m role       = "TFEKSWorkshop-Cluster-Role"
+    }
+
+[1m  # aws_iam_role_policy_attachment.node_AmazonEC2ContainerRegistryReadOnly[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "node_AmazonEC2ContainerRegistryReadOnly" {
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+      [32m+[0m[0m role       = "TFEKSWorkshop-Worker-Role"
+    }
+
+[1m  # aws_iam_role_policy_attachment.node_AmazonEKSWorkerNodePolicy[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "node_AmazonEKSWorkerNodePolicy" {
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+      [32m+[0m[0m role       = "TFEKSWorkshop-Worker-Role"
+    }
+
+[1m  # aws_iam_role_policy_attachment.node_AmazonEKS_CNI_Policy[0m will be created
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "node_AmazonEKS_CNI_Policy" {
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+      [32m+[0m[0m role       = "TFEKSWorkshop-Worker-Role"
+    }
+
+[1m  # aws_internet_gateway.this[0m will be created
+[0m  [32m+[0m[0m resource "aws_internet_gateway" "this" {
+      [32m+[0m[0m arn      = (known after apply)
+      [32m+[0m[0m id       = (known after apply)
+      [32m+[0m[0m owner_id = (known after apply)
+      [32m+[0m[0m tags     = {
+          [32m+[0m[0m "Name" = "TFEKSWorkshop-igw"
+        }
+      [32m+[0m[0m tags_all = {
+          [32m+[0m[0m "Name" = "TFEKSWorkshop-igw"
+        }
+      [32m+[0m[0m vpc_id   = (known after apply)
+    }
+
+[1m  # aws_nat_gateway.main[0m will be created
+[0m  [32m+[0m[0m resource "aws_nat_gateway" "main" {
+      [32m+[0m[0m allocation_id        = (known after apply)
+      [32m+[0m[0m association_id       = (known after apply)
+      [32m+[0m[0m connectivity_type    = "public"
+      [32m+[0m[0m id                   = (known after apply)
+      [32m+[0m[0m network_interface_id = (known after apply)
+      [32m+[0m[0m private_ip           = (known after apply)
+      [32m+[0m[0m public_ip            = (known after apply)
+      [32m+[0m[0m subnet_id            = (known after apply)
+      [32m+[0m[0m tags                 = {
+          [32m+[0m[0m "Name" = "TFEKSWorkshop-ngw"
+        }
+      [32m+[0m[0m tags_all             = {
+          [32m+[0m[0m "Name" = "TFEKSWorkshop-ngw"
+        }
+    }
+
+[1m  # aws_route.main[0m will be created
+[0m  [32m+[0m[0m resource "aws_route" "main" {
+      [32m+[0m[0m destination_cidr_block = "0.0.0.0/0"
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m instance_id            = (known after apply)
+      [32m+[0m[0m instance_owner_id      = (known after apply)
+      [32m+[0m[0m nat_gateway_id         = (known after apply)
+      [32m+[0m[0m network_interface_id   = (known after apply)
+      [32m+[0m[0m origin                 = (known after apply)
+      [32m+[0m[0m route_table_id         = (known after apply)
+      [32m+[0m[0m state                  = (known after apply)
+    }
+
+[1m  # aws_route_table.main[0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table" "main" {
+      [32m+[0m[0m arn              = (known after apply)
+      [32m+[0m[0m id               = (known after apply)
+      [32m+[0m[0m owner_id         = (known after apply)
+      [32m+[0m[0m propagating_vgws = (known after apply)
+      [32m+[0m[0m route            = [
+          [32m+[0m[0m {
+              [32m+[0m[0m carrier_gateway_id         = ""
+              [32m+[0m[0m cidr_block                 = "0.0.0.0/0"
+              [32m+[0m[0m core_network_arn           = ""
+              [32m+[0m[0m destination_prefix_list_id = ""
+              [32m+[0m[0m egress_only_gateway_id     = ""
+              [32m+[0m[0m gateway_id                 = (known after apply)
+              [32m+[0m[0m instance_id                = ""
+              [32m+[0m[0m ipv6_cidr_block            = ""
+              [32m+[0m[0m local_gateway_id           = ""
+              [32m+[0m[0m nat_gateway_id             = ""
+              [32m+[0m[0m network_interface_id       = ""
+              [32m+[0m[0m transit_gateway_id         = ""
+              [32m+[0m[0m vpc_endpoint_id            = ""
+              [32m+[0m[0m vpc_peering_connection_id  = ""
+            },
+        ]
+      [32m+[0m[0m tags             = {
+          [32m+[0m[0m "Name" = "TFEKSWorkshop-Default-rt"
+        }
+      [32m+[0m[0m tags_all         = {
+          [32m+[0m[0m "Name" = "TFEKSWorkshop-Default-rt"
+        }
+      [32m+[0m[0m vpc_id           = (known after apply)
+    }
+
+[1m  # aws_route_table_association.internet_access[0][0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table_association" "internet_access" {
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m route_table_id = (known after apply)
+      [32m+[0m[0m subnet_id      = (known after apply)
+    }
+
+[1m  # aws_route_table_association.internet_access[1][0m will be created
+[0m  [32m+[0m[0m resource "aws_route_table_association" "internet_access" {
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m route_table_id = (known after apply)
+      [32m+[0m[0m subnet_id      = (known after apply)
+    }
+
+[1m  # aws_security_group.control_plane_sg[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group" "control_plane_sg" {
+      [32m+[0m[0m arn                    = (known after apply)
+      [32m+[0m[0m description            = "Managed by Terraform"
+      [32m+[0m[0m egress                 = (known after apply)
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m ingress                = (known after apply)
+      [32m+[0m[0m name                   = "TFEKSWorkshop-ControlPlane-sg"
+      [32m+[0m[0m name_prefix            = (known after apply)
+      [32m+[0m[0m owner_id               = (known after apply)
+      [32m+[0m[0m revoke_rules_on_delete = false
+      [32m+[0m[0m tags                   = {
+          [32m+[0m[0m "Name" = "TFEKSWorkshop-ControlPlane-sg"
+        }
+      [32m+[0m[0m tags_all               = {
+          [32m+[0m[0m "Name" = "TFEKSWorkshop-ControlPlane-sg"
+        }
+      [32m+[0m[0m vpc_id                 = (known after apply)
+    }
+
+[1m  # aws_security_group.data_plane_sg[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group" "data_plane_sg" {
+      [32m+[0m[0m arn                    = (known after apply)
+      [32m+[0m[0m description            = "Managed by Terraform"
+      [32m+[0m[0m egress                 = (known after apply)
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m ingress                = (known after apply)
+      [32m+[0m[0m name                   = "TFEKSWorkshop-Worker-sg"
+      [32m+[0m[0m name_prefix            = (known after apply)
+      [32m+[0m[0m owner_id               = (known after apply)
+      [32m+[0m[0m revoke_rules_on_delete = false
+      [32m+[0m[0m tags                   = {
+          [32m+[0m[0m "Name" = "TFEKSWorkshop-Worker-sg"
+        }
+      [32m+[0m[0m tags_all               = {
+          [32m+[0m[0m "Name" = "TFEKSWorkshop-Worker-sg"
+        }
+      [32m+[0m[0m vpc_id                 = (known after apply)
+    }
+
+[1m  # aws_security_group.eks_cluster[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group" "eks_cluster" {
+      [32m+[0m[0m arn                    = (known after apply)
+      [32m+[0m[0m description            = "Cluster communication with worker nodes"
+      [32m+[0m[0m egress                 = (known after apply)
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m ingress                = (known after apply)
+      [32m+[0m[0m name                   = "TFEKSWorkshop-cluster-sg"
+      [32m+[0m[0m name_prefix            = (known after apply)
+      [32m+[0m[0m owner_id               = (known after apply)
+      [32m+[0m[0m revoke_rules_on_delete = false
+      [32m+[0m[0m tags                   = {
+          [32m+[0m[0m "Name" = "TFEKSWorkshop-cluster-sg"
+        }
+      [32m+[0m[0m tags_all               = {
+          [32m+[0m[0m "Name" = "TFEKSWorkshop-cluster-sg"
+        }
+      [32m+[0m[0m vpc_id                 = (known after apply)
+    }
+
+[1m  # aws_security_group.eks_nodes[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group" "eks_nodes" {
+      [32m+[0m[0m arn                    = (known after apply)
+      [32m+[0m[0m description            = "Security group for all nodes in the cluster"
+      [32m+[0m[0m egress                 = [
+          [32m+[0m[0m {
+              [32m+[0m[0m cidr_blocks      = [
+                  [32m+[0m[0m "0.0.0.0/0",
+                ]
+              [32m+[0m[0m description      = ""
+              [32m+[0m[0m from_port        = 0
+              [32m+[0m[0m ipv6_cidr_blocks = []
+              [32m+[0m[0m prefix_list_ids  = []
+              [32m+[0m[0m protocol         = "-1"
+              [32m+[0m[0m security_groups  = []
+              [32m+[0m[0m self             = false
+              [32m+[0m[0m to_port          = 0
+            },
+        ]
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m ingress                = (known after apply)
+      [32m+[0m[0m name                   = "TFEKSWorkshop-node-sg"
+      [32m+[0m[0m name_prefix            = (known after apply)
+      [32m+[0m[0m owner_id               = (known after apply)
+      [32m+[0m[0m revoke_rules_on_delete = false
+      [32m+[0m[0m tags                   = {
+          [32m+[0m[0m "Name"                                        = "TFEKSWorkshop-node-sg"
+          [32m+[0m[0m "kubernetes.io/cluster/TFEKSWorkshop-cluster" = "owned"
+        }
+      [32m+[0m[0m tags_all               = {
+          [32m+[0m[0m "Name"                                        = "TFEKSWorkshop-node-sg"
+          [32m+[0m[0m "kubernetes.io/cluster/TFEKSWorkshop-cluster" = "owned"
+        }
+      [32m+[0m[0m vpc_id                 = (known after apply)
+    }
+
+[1m  # aws_security_group.public_sg[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group" "public_sg" {
+      [32m+[0m[0m arn                    = (known after apply)
+      [32m+[0m[0m description            = "Managed by Terraform"
+      [32m+[0m[0m egress                 = (known after apply)
+      [32m+[0m[0m id                     = (known after apply)
+      [32m+[0m[0m ingress                = (known after apply)
+      [32m+[0m[0m name                   = "TFEKSWorkshop-Public-sg"
+      [32m+[0m[0m name_prefix            = (known after apply)
+      [32m+[0m[0m owner_id               = (known after apply)
+      [32m+[0m[0m revoke_rules_on_delete = false
+      [32m+[0m[0m tags                   = {
+          [32m+[0m[0m "Name" = "TFEKSWorkshop-Public-sg"
+        }
+      [32m+[0m[0m tags_all               = {
+          [32m+[0m[0m "Name" = "TFEKSWorkshop-Public-sg"
+        }
+      [32m+[0m[0m vpc_id                 = (known after apply)
+    }
+
+[1m  # aws_security_group_rule.cluster_inbound[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "cluster_inbound" {
+      [32m+[0m[0m description              = "Allow worker nodes to communicate with the cluster API Server"
+      [32m+[0m[0m from_port                = 443
+      [32m+[0m[0m id                       = (known after apply)
+      [32m+[0m[0m protocol                 = "tcp"
+      [32m+[0m[0m security_group_id        = (known after apply)
+      [32m+[0m[0m security_group_rule_id   = (known after apply)
+      [32m+[0m[0m self                     = false
+      [32m+[0m[0m source_security_group_id = (known after apply)
+      [32m+[0m[0m to_port                  = 443
+      [32m+[0m[0m type                     = "ingress"
+    }
+
+[1m  # aws_security_group_rule.cluster_outbound[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "cluster_outbound" {
+      [32m+[0m[0m description              = "Allow cluster API Server to communicate with the worker nodes"
+      [32m+[0m[0m from_port                = 1024
+      [32m+[0m[0m id                       = (known after apply)
+      [32m+[0m[0m protocol                 = "tcp"
+      [32m+[0m[0m security_group_id        = (known after apply)
+      [32m+[0m[0m security_group_rule_id   = (known after apply)
+      [32m+[0m[0m self                     = false
+      [32m+[0m[0m source_security_group_id = (known after apply)
+      [32m+[0m[0m to_port                  = 65535
+      [32m+[0m[0m type                     = "egress"
+    }
+
+[1m  # aws_security_group_rule.control_plane_inbound[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "control_plane_inbound" {
+      [32m+[0m[0m cidr_blocks              = [
+          [32m+[0m[0m "10.0.0.0/24",
+          [32m+[0m[0m "10.0.1.0/24",
+          [32m+[0m[0m "10.0.2.0/24",
+          [32m+[0m[0m "10.0.3.0/24",
+        ]
+      [32m+[0m[0m from_port                = 0
+      [32m+[0m[0m id                       = (known after apply)
+      [32m+[0m[0m protocol                 = "tcp"
+      [32m+[0m[0m security_group_id        = (known after apply)
+      [32m+[0m[0m security_group_rule_id   = (known after apply)
+      [32m+[0m[0m self                     = false
+      [32m+[0m[0m source_security_group_id = (known after apply)
+      [32m+[0m[0m to_port                  = 65535
+      [32m+[0m[0m type                     = "ingress"
+    }
+
+[1m  # aws_security_group_rule.control_plane_outbound[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "control_plane_outbound" {
+      [32m+[0m[0m cidr_blocks              = [
+          [32m+[0m[0m "0.0.0.0/0",
+        ]
+      [32m+[0m[0m from_port                = 0
+      [32m+[0m[0m id                       = (known after apply)
+      [32m+[0m[0m protocol                 = "-1"
+      [32m+[0m[0m security_group_id        = (known after apply)
+      [32m+[0m[0m security_group_rule_id   = (known after apply)
+      [32m+[0m[0m self                     = false
+      [32m+[0m[0m source_security_group_id = (known after apply)
+      [32m+[0m[0m to_port                  = 65535
+      [32m+[0m[0m type                     = "egress"
+    }
+
+[1m  # aws_security_group_rule.node_outbound[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "node_outbound" {
+      [32m+[0m[0m cidr_blocks              = [
+          [32m+[0m[0m "0.0.0.0/0",
+        ]
+      [32m+[0m[0m from_port                = 0
+      [32m+[0m[0m id                       = (known after apply)
+      [32m+[0m[0m protocol                 = "-1"
+      [32m+[0m[0m security_group_id        = (known after apply)
+      [32m+[0m[0m security_group_rule_id   = (known after apply)
+      [32m+[0m[0m self                     = false
+      [32m+[0m[0m source_security_group_id = (known after apply)
+      [32m+[0m[0m to_port                  = 0
+      [32m+[0m[0m type                     = "egress"
+    }
+
+[1m  # aws_security_group_rule.nodes[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "nodes" {
+      [32m+[0m[0m cidr_blocks              = [
+          [32m+[0m[0m "10.0.0.0/24",
+          [32m+[0m[0m "10.0.1.0/24",
+          [32m+[0m[0m "10.0.2.0/24",
+          [32m+[0m[0m "10.0.3.0/24",
+        ]
+      [32m+[0m[0m description              = "Allow nodes to communicate with each other"
+      [32m+[0m[0m from_port                = 0
+      [32m+[0m[0m id                       = (known after apply)
+      [32m+[0m[0m protocol                 = "-1"
+      [32m+[0m[0m security_group_id        = (known after apply)
+      [32m+[0m[0m security_group_rule_id   = (known after apply)
+      [32m+[0m[0m self                     = false
+      [32m+[0m[0m source_security_group_id = (known after apply)
+      [32m+[0m[0m to_port                  = 65535
+      [32m+[0m[0m type                     = "ingress"
+    }
+
+[1m  # aws_security_group_rule.nodes_cluster_inbound[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "nodes_cluster_inbound" {
+      [32m+[0m[0m description              = "Allow worker Kubelets and pods to receive communication from the cluster control plane"
+      [32m+[0m[0m from_port                = 1025
+      [32m+[0m[0m id                       = (known after apply)
+      [32m+[0m[0m protocol                 = "tcp"
+      [32m+[0m[0m security_group_id        = (known after apply)
+      [32m+[0m[0m security_group_rule_id   = (known after apply)
+      [32m+[0m[0m self                     = false
+      [32m+[0m[0m source_security_group_id = (known after apply)
+      [32m+[0m[0m to_port                  = 65535
+      [32m+[0m[0m type                     = "ingress"
+    }
+
+[1m  # aws_security_group_rule.nodes_inbound[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "nodes_inbound" {
+      [32m+[0m[0m cidr_blocks              = [
+          [32m+[0m[0m "10.0.2.0/24",
+          [32m+[0m[0m "10.0.3.0/24",
+        ]
+      [32m+[0m[0m description              = "Allow worker Kubelets and pods to receive communication from the cluster control plane"
+      [32m+[0m[0m from_port                = 1025
+      [32m+[0m[0m id                       = (known after apply)
+      [32m+[0m[0m protocol                 = "tcp"
+      [32m+[0m[0m security_group_id        = (known after apply)
+      [32m+[0m[0m security_group_rule_id   = (known after apply)
+      [32m+[0m[0m self                     = false
+      [32m+[0m[0m source_security_group_id = (known after apply)
+      [32m+[0m[0m to_port                  = 65535
+      [32m+[0m[0m type                     = "ingress"
+    }
+
+[1m  # aws_security_group_rule.nodes_internal[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "nodes_internal" {
+      [32m+[0m[0m description              = "Allow nodes to communicate with each other"
+      [32m+[0m[0m from_port                = 0
+      [32m+[0m[0m id                       = (known after apply)
+      [32m+[0m[0m protocol                 = "-1"
+      [32m+[0m[0m security_group_id        = (known after apply)
+      [32m+[0m[0m security_group_rule_id   = (known after apply)
+      [32m+[0m[0m self                     = false
+      [32m+[0m[0m source_security_group_id = (known after apply)
+      [32m+[0m[0m to_port                  = 65535
+      [32m+[0m[0m type                     = "ingress"
+    }
+
+[1m  # aws_security_group_rule.sg_egress_public[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "sg_egress_public" {
+      [32m+[0m[0m cidr_blocks              = [
+          [32m+[0m[0m "0.0.0.0/0",
+        ]
+      [32m+[0m[0m from_port                = 0
+      [32m+[0m[0m id                       = (known after apply)
+      [32m+[0m[0m protocol                 = "-1"
+      [32m+[0m[0m security_group_id        = (known after apply)
+      [32m+[0m[0m security_group_rule_id   = (known after apply)
+      [32m+[0m[0m self                     = false
+      [32m+[0m[0m source_security_group_id = (known after apply)
+      [32m+[0m[0m to_port                  = 0
+      [32m+[0m[0m type                     = "egress"
+    }
+
+[1m  # aws_security_group_rule.sg_ingress_public_443[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "sg_ingress_public_443" {
+      [32m+[0m[0m cidr_blocks              = [
+          [32m+[0m[0m "0.0.0.0/0",
+        ]
+      [32m+[0m[0m from_port                = 443
+      [32m+[0m[0m id                       = (known after apply)
+      [32m+[0m[0m protocol                 = "tcp"
+      [32m+[0m[0m security_group_id        = (known after apply)
+      [32m+[0m[0m security_group_rule_id   = (known after apply)
+      [32m+[0m[0m self                     = false
+      [32m+[0m[0m source_security_group_id = (known after apply)
+      [32m+[0m[0m to_port                  = 443
+      [32m+[0m[0m type                     = "ingress"
+    }
+
+[1m  # aws_security_group_rule.sg_ingress_public_80[0m will be created
+[0m  [32m+[0m[0m resource "aws_security_group_rule" "sg_ingress_public_80" {
+      [32m+[0m[0m cidr_blocks              = [
+          [32m+[0m[0m "0.0.0.0/0",
+        ]
+      [32m+[0m[0m from_port                = 80
+      [32m+[0m[0m id                       = (known after apply)
+      [32m+[0m[0m protocol                 = "tcp"
+      [32m+[0m[0m security_group_id        = (known after apply)
+      [32m+[0m[0m security_group_rule_id   = (known after apply)
+      [32m+[0m[0m self                     = false
+      [32m+[0m[0m source_security_group_id = (known after apply)
+      [32m+[0m[0m to_port                  = 80
+      [32m+[0m[0m type                     = "ingress"
+    }
+
+[1m  # aws_subnet.private[0][0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "private" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "ap-south-1a"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.0.2.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = false
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name"                                        = "TFEKSWorkshop-private-sg"
+          [32m+[0m[0m "kubernetes.io/cluster/TFEKSWorkshop-cluster" = "shared"
+          [32m+[0m[0m "kubernetes.io/role/internal-elb"             = "1"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name"                                        = "TFEKSWorkshop-private-sg"
+          [32m+[0m[0m "kubernetes.io/cluster/TFEKSWorkshop-cluster" = "shared"
+          [32m+[0m[0m "kubernetes.io/role/internal-elb"             = "1"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_subnet.private[1][0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "private" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "ap-south-1b"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.0.3.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = false
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name"                                        = "TFEKSWorkshop-private-sg"
+          [32m+[0m[0m "kubernetes.io/cluster/TFEKSWorkshop-cluster" = "shared"
+          [32m+[0m[0m "kubernetes.io/role/internal-elb"             = "1"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name"                                        = "TFEKSWorkshop-private-sg"
+          [32m+[0m[0m "kubernetes.io/cluster/TFEKSWorkshop-cluster" = "shared"
+          [32m+[0m[0m "kubernetes.io/role/internal-elb"             = "1"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_subnet.public[0][0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "public" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "ap-south-1a"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.0.0.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = true
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name"                                        = "TFEKSWorkshop-public-sg"
+          [32m+[0m[0m "kubernetes.io/cluster/TFEKSWorkshop-cluster" = "shared"
+          [32m+[0m[0m "kubernetes.io/role/elb"                      = "1"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name"                                        = "TFEKSWorkshop-public-sg"
+          [32m+[0m[0m "kubernetes.io/cluster/TFEKSWorkshop-cluster" = "shared"
+          [32m+[0m[0m "kubernetes.io/role/elb"                      = "1"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_subnet.public[1][0m will be created
+[0m  [32m+[0m[0m resource "aws_subnet" "public" {
+      [32m+[0m[0m arn                                            = (known after apply)
+      [32m+[0m[0m assign_ipv6_address_on_creation                = false
+      [32m+[0m[0m availability_zone                              = "ap-south-1b"
+      [32m+[0m[0m availability_zone_id                           = (known after apply)
+      [32m+[0m[0m cidr_block                                     = "10.0.1.0/24"
+      [32m+[0m[0m enable_dns64                                   = false
+      [32m+[0m[0m enable_resource_name_dns_a_record_on_launch    = false
+      [32m+[0m[0m enable_resource_name_dns_aaaa_record_on_launch = false
+      [32m+[0m[0m id                                             = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_association_id                 = (known after apply)
+      [32m+[0m[0m ipv6_native                                    = false
+      [32m+[0m[0m map_public_ip_on_launch                        = true
+      [32m+[0m[0m owner_id                                       = (known after apply)
+      [32m+[0m[0m private_dns_hostname_type_on_launch            = (known after apply)
+      [32m+[0m[0m tags                                           = {
+          [32m+[0m[0m "Name"                                        = "TFEKSWorkshop-public-sg"
+          [32m+[0m[0m "kubernetes.io/cluster/TFEKSWorkshop-cluster" = "shared"
+          [32m+[0m[0m "kubernetes.io/role/elb"                      = "1"
+        }
+      [32m+[0m[0m tags_all                                       = {
+          [32m+[0m[0m "Name"                                        = "TFEKSWorkshop-public-sg"
+          [32m+[0m[0m "kubernetes.io/cluster/TFEKSWorkshop-cluster" = "shared"
+          [32m+[0m[0m "kubernetes.io/role/elb"                      = "1"
+        }
+      [32m+[0m[0m vpc_id                                         = (known after apply)
+    }
+
+[1m  # aws_vpc.this[0m will be created
+[0m  [32m+[0m[0m resource "aws_vpc" "this" {
+      [32m+[0m[0m arn                                  = (known after apply)
+      [32m+[0m[0m cidr_block                           = "10.0.0.0/16"
+      [32m+[0m[0m default_network_acl_id               = (known after apply)
+      [32m+[0m[0m default_route_table_id               = (known after apply)
+      [32m+[0m[0m default_security_group_id            = (known after apply)
+      [32m+[0m[0m dhcp_options_id                      = (known after apply)
+      [32m+[0m[0m enable_classiclink                   = (known after apply)
+      [32m+[0m[0m enable_classiclink_dns_support       = (known after apply)
+      [32m+[0m[0m enable_dns_hostnames                 = true
+      [32m+[0m[0m enable_dns_support                   = true
+      [32m+[0m[0m enable_network_address_usage_metrics = (known after apply)
+      [32m+[0m[0m id                                   = (known after apply)
+      [32m+[0m[0m instance_tenancy                     = "default"
+      [32m+[0m[0m ipv6_association_id                  = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block                      = (known after apply)
+      [32m+[0m[0m ipv6_cidr_block_network_border_group = (known after apply)
+      [32m+[0m[0m main_route_table_id                  = (known after apply)
+      [32m+[0m[0m owner_id                             = (known after apply)
+      [32m+[0m[0m tags                                 = {
+          [32m+[0m[0m "Name"                                        = "TFEKSWorkshop-vpc"
+          [32m+[0m[0m "kubernetes.io/cluster/TFEKSWorkshop-cluster" = "shared"
+        }
+      [32m+[0m[0m tags_all                             = {
+          [32m+[0m[0m "Name"                                        = "TFEKSWorkshop-vpc"
+          [32m+[0m[0m "kubernetes.io/cluster/TFEKSWorkshop-cluster" = "shared"
+        }
+    }
+
+[1mPlan:[0m 37 to add, 0 to change, 0 to destroy.
+[0m
+Changes to Outputs:
+  [32m+[0m[0m cluster_ca_certificate = (known after apply)
+  [32m+[0m[0m cluster_endpoint       = (known after apply)
+  [32m+[0m[0m cluster_name           = "TFEKSWorkshop-cluster"
+[0m[1maws_vpc.this: Creating...[0m[0m
+[0m[1maws_iam_role.node: Creating...[0m[0m
+[0m[1maws_eip.main: Creating...[0m[0m
+[0m[1maws_iam_role.cluster: Creating...[0m[0m
+[0m[1maws_eip.main: Creation complete after 0s [id=eipalloc-030794d19f0d430c2][0m
+[0m[1maws_iam_role.cluster: Creation complete after 1s [id=TFEKSWorkshop-Cluster-Role][0m
+[0m[1maws_iam_role.node: Creation complete after 1s [id=TFEKSWorkshop-Worker-Role][0m
+[0m[1maws_iam_role_policy_attachment.cluster_AmazonEKSClusterPolicy: Creating...[0m[0m
+[0m[1maws_iam_role_policy_attachment.node_AmazonEC2ContainerRegistryReadOnly: Creating...[0m[0m
+[0m[1maws_iam_role_policy_attachment.node_AmazonEKS_CNI_Policy: Creating...[0m[0m
+[0m[1maws_iam_role_policy_attachment.node_AmazonEKSWorkerNodePolicy: Creating...[0m[0m
+[0m[1maws_iam_role_policy_attachment.node_AmazonEKSWorkerNodePolicy: Creation complete after 1s [id=TFEKSWorkshop-Worker-Role-20230611131330694100000001][0m
+[0m[1maws_iam_role_policy_attachment.cluster_AmazonEKSClusterPolicy: Creation complete after 1s [id=TFEKSWorkshop-Cluster-Role-20230611131330701100000002][0m
+[0m[1maws_iam_role_policy_attachment.node_AmazonEKS_CNI_Policy: Creation complete after 1s [id=TFEKSWorkshop-Worker-Role-20230611131331002100000004][0m
+[0m[1maws_iam_role_policy_attachment.node_AmazonEC2ContainerRegistryReadOnly: Creation complete after 1s [id=TFEKSWorkshop-Worker-Role-20230611131330955100000003][0m
+[0m[1maws_vpc.this: Still creating... [10s elapsed][0m[0m
+[0m[1maws_vpc.this: Creation complete after 11s [id=vpc-0d8e567012b00b919][0m
+[0m[1maws_subnet.private[1]: Creating...[0m[0m
+[0m[1maws_security_group.eks_cluster: Creating...[0m[0m
+[0m[1maws_security_group.data_plane_sg: Creating...[0m[0m
+[0m[1maws_security_group.public_sg: Creating...[0m[0m
+[0m[1maws_security_group.eks_nodes: Creating...[0m[0m
+[0m[1maws_subnet.public[1]: Creating...[0m[0m
+[0m[1maws_security_group.control_plane_sg: Creating...[0m[0m
+[0m[1maws_internet_gateway.this: Creating...[0m[0m
+[0m[1maws_subnet.public[0]: Creating...[0m[0m
+[0m[1maws_subnet.private[0]: Creating...[0m[0m
+[0m[1maws_internet_gateway.this: Creation complete after 1s [id=igw-065c76fdce648c339][0m
+[0m[1maws_route_table.main: Creating...[0m[0m
+[0m[1maws_subnet.private[1]: Creation complete after 1s [id=subnet-0633a4c2bdf6cfe0e][0m
+[0m[1maws_subnet.private[0]: Creation complete after 1s [id=subnet-0db4065c304c5917e][0m
+[0m[1maws_route_table.main: Creation complete after 0s [id=rtb-0574a1934f77911eb][0m
+[0m[1maws_security_group.data_plane_sg: Creation complete after 1s [id=sg-0cd2d5bf63a8f30ca][0m
+[0m[1maws_security_group.control_plane_sg: Creation complete after 1s [id=sg-0f35c8003cb89e435][0m
+[0m[1maws_security_group.eks_cluster: Creation complete after 1s [id=sg-0054dbbc264c73cfa][0m
+[0m[1maws_security_group_rule.nodes: Creating...[0m[0m
+[0m[1maws_security_group_rule.node_outbound: Creating...[0m[0m
+[0m[1maws_security_group_rule.control_plane_outbound: Creating...[0m[0m
+[0m[1maws_security_group_rule.control_plane_inbound: Creating...[0m[0m
+[0m[1maws_security_group_rule.nodes_inbound: Creating...[0m[0m
+[0m[1maws_security_group.public_sg: Creation complete after 2s [id=sg-0c9e4bb3fae5c7431][0m
+[0m[1maws_security_group_rule.sg_ingress_public_443: Creating...[0m[0m
+[0m[1maws_security_group.eks_nodes: Creation complete after 2s [id=sg-09b5b33ef9284062d][0m
+[0m[1maws_security_group_rule.sg_ingress_public_80: Creating...[0m[0m
+[0m[1maws_security_group_rule.sg_egress_public: Creating...[0m[0m
+[0m[1maws_security_group_rule.nodes_inbound: Creation complete after 1s [id=sgrule-1976860447][0m
+[0m[1maws_security_group_rule.control_plane_outbound: Creation complete after 1s [id=sgrule-2238384795][0m
+[0m[1maws_security_group_rule.cluster_inbound: Creating...[0m[0m
+[0m[1maws_security_group_rule.cluster_outbound: Creating...[0m[0m
+[0m[1maws_security_group_rule.sg_ingress_public_443: Creation complete after 0s [id=sgrule-4142756386][0m
+[0m[1maws_security_group_rule.nodes_internal: Creating...[0m[0m
+[0m[1maws_security_group_rule.nodes: Creation complete after 1s [id=sgrule-812898895][0m
+[0m[1maws_security_group_rule.nodes_cluster_inbound: Creating...[0m[0m
+[0m[1maws_security_group_rule.control_plane_inbound: Creation complete after 1s [id=sgrule-205965086][0m
+[0m[1maws_security_group_rule.cluster_outbound: Creation complete after 0s [id=sgrule-3795627283][0m
+[0m[1maws_security_group_rule.cluster_inbound: Creation complete after 0s [id=sgrule-4051550868][0m
+[0m[1maws_security_group_rule.nodes_internal: Creation complete after 0s [id=sgrule-465801002][0m
+[0m[1maws_security_group_rule.sg_ingress_public_80: Creation complete after 0s [id=sgrule-6290608][0m
+[0m[1maws_security_group_rule.node_outbound: Creation complete after 1s [id=sgrule-158040775][0m
+[0m[1maws_security_group_rule.nodes_cluster_inbound: Creation complete after 1s [id=sgrule-2405990963][0m
+[0m[1maws_security_group_rule.sg_egress_public: Creation complete after 1s [id=sgrule-3963527085][0m
+[0m[1maws_subnet.public[1]: Still creating... [10s elapsed][0m[0m
+[0m[1maws_subnet.public[0]: Still creating... [10s elapsed][0m[0m
+[0m[1maws_subnet.public[0]: Creation complete after 11s [id=subnet-0f2203cf5aad0eac1][0m
+[0m[1maws_nat_gateway.main: Creating...[0m[0m
+[0m[1maws_subnet.public[1]: Creation complete after 11s [id=subnet-0f50b638b1d648c1e][0m
+[0m[1maws_eks_cluster.this: Creating...[0m[0m
+[0m[1maws_route_table_association.internet_access[0]: Creating...[0m[0m
+[0m[1maws_route_table_association.internet_access[1]: Creating...[0m[0m
+[0m[1maws_route_table_association.internet_access[0]: Creation complete after 0s [id=rtbassoc-046c099a5716125f4][0m
+[0m[1maws_route_table_association.internet_access[1]: Creation complete after 0s [id=rtbassoc-0734a4393ffdd8df9][0m
+[0m[1maws_nat_gateway.main: Still creating... [10s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [10s elapsed][0m[0m
+[0m[1maws_nat_gateway.main: Still creating... [20s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [20s elapsed][0m[0m
+[0m[1maws_nat_gateway.main: Still creating... [30s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [30s elapsed][0m[0m
+[0m[1maws_nat_gateway.main: Still creating... [40s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [40s elapsed][0m[0m
+[0m[1maws_nat_gateway.main: Still creating... [50s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [50s elapsed][0m[0m
+[0m[1maws_nat_gateway.main: Still creating... [1m0s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [1m0s elapsed][0m[0m
+[0m[1maws_nat_gateway.main: Still creating... [1m10s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [1m10s elapsed][0m[0m
+[0m[1maws_nat_gateway.main: Still creating... [1m20s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [1m20s elapsed][0m[0m
+[0m[1maws_nat_gateway.main: Still creating... [1m30s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [1m30s elapsed][0m[0m
+[0m[1maws_nat_gateway.main: Still creating... [1m40s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [1m40s elapsed][0m[0m
+[0m[1maws_nat_gateway.main: Creation complete after 1m43s [id=nat-02fc585555950bbeb][0m
+[0m[1maws_route.main: Creating...[0m[0m
+[0m[1maws_route.main: Creation complete after 1s [id=r-rtb-0a8da814be3f25cdd1080289494][0m
+[0m[1maws_eks_cluster.this: Still creating... [1m50s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [2m0s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [2m10s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [2m20s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [2m30s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [2m40s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [2m50s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [3m0s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [3m10s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [3m20s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [3m30s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [3m40s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [3m50s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [4m0s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [4m10s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [4m20s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [4m30s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [4m40s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [4m50s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [5m0s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [5m10s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [5m20s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [5m30s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [5m40s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [5m50s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [6m0s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [6m10s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [6m20s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [6m30s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [6m40s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [6m50s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [7m0s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [7m10s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [7m20s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [7m30s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [7m40s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [7m50s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [8m0s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [8m10s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [8m20s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [8m30s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [8m40s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [8m50s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Still creating... [9m0s elapsed][0m[0m
+[0m[1maws_eks_cluster.this: Creation complete after 9m0s [id=TFEKSWorkshop-cluster][0m
+[0m[1maws_eks_node_group.this: Creating...[0m[0m
+[0m[1maws_eks_node_group.this: Still creating... [10s elapsed][0m[0m
+[0m[1maws_eks_node_group.this: Still creating... [20s elapsed][0m[0m
+[0m[1maws_eks_node_group.this: Still creating... [30s elapsed][0m[0m
+[0m[1maws_eks_node_group.this: Still creating... [40s elapsed][0m[0m
+[0m[1maws_eks_node_group.this: Still creating... [50s elapsed][0m[0m
+[0m[1maws_eks_node_group.this: Still creating... [1m0s elapsed][0m[0m
+[0m[1maws_eks_node_group.this: Still creating... [1m10s elapsed][0m[0m
+[0m[1maws_eks_node_group.this: Still creating... [1m20s elapsed][0m[0m
+[0m[1maws_eks_node_group.this: Still creating... [1m30s elapsed][0m[0m
+[0m[1maws_eks_node_group.this: Still creating... [1m40s elapsed][0m[0m
+[0m[1maws_eks_node_group.this: Still creating... [1m50s elapsed][0m[0m
+[0m[1maws_eks_node_group.this: Creation complete after 1m58s [id=TFEKSWorkshop-cluster:TFEKSWorkshop][0m
+[0m[1m[32m
+Apply complete! Resources: 37 added, 0 changed, 0 destroyed.
+[0m[0m[1m[32m
+Outputs:
+
+[0mcluster_ca_certificate = "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMvakNDQWVhZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJek1EWXhNVEV6TVRreE1Wb1hEVE16TURZd09ERXpNVGt4TVZvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBS05LClB5RitTM2dJczBQN0VDNHdZK2VCQzYvUVkybCtYU0lhZ1FDWlpFcWhHVE1aV1Zhdmc1Ymc4aFVmRWY2a1dBME0KQVdxdmNVMU41MVVnWnRodEpUdEJqSWZoNllycm82RzBxbGtqZkJ6TE1lV21XQTV2YXFsV2xEckxvSGFVaTFmRAp4TGhWTnFBdXlFZ1B6NVd1Q2FqRFppU2h3dFVMZ3p2c1ZDMlBEdFkybHRvYTBMckVFOFM1YXFTSmlTTHUyWnlWCkZ4YVQ1Qmt3c3pMbklQclZoZVlTclRYZmVXMC9NY2xnbXUvZHNCZDBHenZkZFB6ZEN4alk4T0FpZ3MwOFlnK2wKdGJxM1BCVm5YV3F1OHpnQ242K0lUVmlkVTNBcVN0UHpRY0w0dkowQi9EUm5BTzZwTW5hSFUvdjNaWXNvbGRnWQpwaUdld0tCaHJkSm5FWTA0NzdjQ0F3RUFBYU5aTUZjd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZNWXQwSTZHMzBJVzJ2cXhjUUMvTkVwTHZmRXpNQlVHQTFVZEVRUU8KTUF5Q0NtdDFZbVZ5Ym1WMFpYTXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQ3ZnZUMwSytHay9tZE5SSU5iQgoyMTRmOStYeHlrYVNYMDhaUCtVMk9raW5kclQvMFluQ3V4S2lTcS9pUStlUFBPcXphR1FaS3ZJV0x4b3YyU1lkCmkrNG8yOFRBZXhPTUwvOGpHYVREeVJaUlJiN05rakVCVHo3Q1V3bXRRc2dGT2Q2a1F2Ynozb21nY1pBMHJmdkgKTVF6Q1hwWGZCckExd053UlVmRTJMR2pueGhmVGR2OUo2VnU5S0VtaHpLbzJUQmlPbXlRWGpsZFRvKzFrWHpmbgo2bHg4eTd0MXBnc0tsY290VmZEM1VLMFlva2dPTXA5MWdDZ1V4ZWFsQVZreXJwd2thQUNONXY3cWFQOUwrOEFRCmtvWTN0cis4T0tMSFVyYWtLTmp5TU1TaUZ6a1ZyUVI3RXlYcW85MmN5WkNZWHRwOE1VQ3NWSjI1aXd5QzgzbEcKSGlzPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+cluster_endpoint = "https://B5B7A5D57D403F30AE491E55673E290B.gr7.ap-south-1.eks.amazonaws.com"
+cluster_name = "TFEKSWorkshop-cluster"
